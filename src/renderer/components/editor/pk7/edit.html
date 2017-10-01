@@ -1,0 +1,1785 @@
+
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <script src="../vendor/jquery.min.js"></script>
+  <script src="../vendor/bootstrap.min.js"></script>
+  <script src="../vendor/angular.min.js"></script>
+  <script src="../vendor/FileSaver.min.js"></script>
+</head>
+<script src="../pkxdelta.js"></script>
+<script src="../util/pk6To7Converter.js"></script>
+<script src="../util/littleEndian.js"></script>
+<script src="../pk6/pk6Data.js"></script>
+<script src="pk7Charset.js"></script>
+<script src="pk7IO.js"></script>
+<script src="pk7Data.js"></script>
+<script src="pk7Download.js"></script>
+<script src="pk7EditController.js"></script>
+<body ng-app="pkxdelta">
+<div ng-controller="pk7EditController" class="container">
+
+  <h1>PK7 Pokemon</h1>
+
+  <ul class="pagination">
+    <li><a href="#" ng-click="selectedTab='core'">Core</a></li>
+    <li><a href="#" ng-click="selectedTab='attacks'">Attacks</a></li>
+    <li><a href="#" ng-click="selectedTab='caught'">Caught</a></li>
+    <li><a href="#" ng-click="selectedTab='genetics'">Genetics</a></li>
+    <li><a href="#" ng-click="selectedTab='ribbons'">Ribbons</a></li>
+    <li><a href="#" ng-click="selectedTab='medals'">Medals</a></li>
+    <li><a href="#" ng-click="selectedTab='history'">History</a></li>
+    <li><a href="#" ng-click="selectedTab='memories'">Memories</a></li>
+  </ul>
+
+  <div ng-show="selectedTab == 'core'">
+    <form role="form">
+      <div class="row">
+              <div class="col-sm-12">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="pokedexNumber">Species</label>
+            <select ng-model="pokemon.core.pokedexNumber" class="form-control" id="pokedexNumber">
+              <option ng-selected="{{data.index == pokemon.core.pokedexNumber}}"ng-repeat="data in pokemonList" value="{{data.index}}">
+                {{data.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="nickname">Nickname</label>
+            <input ng-model="pokemon.core.nickname" class="form-control" id="nickname">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="heldItem">Held Item</label>
+            <select ng-model="pokemon.core.heldItem" class="form-control" id="heldItem">
+              <option ng-selected="{{item.value == pokemon.core.heldItem}}"ng-repeat="item in itemList" value="{{item.value}}">
+                {{item.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="egg" ng-model="pokemon.core.egg"> Egg
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="nicknamed" ng-model="pokemon.core.nicknamed"> Nicknamed
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="experience">Experience</label>
+            <input type="number" ng-model="pokemon.core.experience" class="form-control" id="experience">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="hpEV">HP EV</label>
+            <input type="number" ng-model="pokemon.core.hpEV" class="form-control" id="hpEV">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="attackEV">Attack EV</label>
+            <input type="number" ng-model="pokemon.core.attackEV" class="form-control" id="attackEV">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="defenseEV">Defense EV</label>
+            <input type="number" ng-model="pokemon.core.defenseEV" class="form-control" id="defenseEV">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="speedEV">Speed EV</label>
+            <input type="number" ng-model="pokemon.core.speedEV" class="form-control" id="speedEV">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="specialAttackEV">Special Attack EV</label>
+            <input type="number" ng-model="pokemon.core.specialAttackEV" class="form-control" id="specialAttackEV">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="specialDefenseEV">Special Defense EV</label>
+            <input type="number" ng-model="pokemon.core.specialDefenseEV" class="form-control" id="specialDefenseEV">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="cool">Cool</label>
+            <input type="number" ng-model="pokemon.core.cool" class="form-control" id="cool">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="beauty">Beauty</label>
+            <input type="number" ng-model="pokemon.core.beauty" class="form-control" id="beauty">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="cute">Cute</label>
+            <input type="number" ng-model="pokemon.core.cute" class="form-control" id="cute">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="smart">Smart</label>
+            <input type="number" ng-model="pokemon.core.smart" class="form-control" id="smart">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="tough">Tough</label>
+            <input type="number" ng-model="pokemon.core.tough" class="form-control" id="tough">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="feel">Feel</label>
+            <input type="number" ng-model="pokemon.core.feel" class="form-control" id="feel">
+          </div>
+        </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-show="selectedTab == 'attacks'">
+    <form role="form">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Attack</th>
+            <th>Current PP</th>
+            <th>PP Ups</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="form-group">
+                <select ng-model="pokemon.attacks.moveIndex1" class="form-control" id="attack1">
+                  <option ng-selected="{{attack.value == pokemon.attacks.moveIndex1}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                    {{attack.name}}
+                  </option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="number" ng-model="pokemon.attacks.currentPP1" class="form-control" id="currentPP1">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="number" ng-model="pokemon.attacks.ppUps1" class="form-control" id="ppUps1">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <select ng-model="pokemon.attacks.moveIndex2" class="form-control" id="attack2">
+                  <option ng-selected="{{attack.value == pokemon.attacks.moveIndex2}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                    {{attack.name}}
+                  </option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="number" ng-model="pokemon.attacks.currentPP2" class="form-control" id="currentPP2">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="number" ng-model="pokemon.attacks.ppUps2" class="form-control" id="ppUps2">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <select ng-model="pokemon.attacks.moveIndex3" class="form-control" id="attack3">
+                  <option ng-selected="{{attack.value == pokemon.attacks.moveIndex3}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                    {{attack.name}}
+                  </option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="number" ng-model="pokemon.attacks.currentPP3" class="form-control" id="currentPP3">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="number" ng-model="pokemon.attacks.ppUps3" class="form-control" id="ppUps3">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <select ng-model="pokemon.attacks.moveIndex4" class="form-control" id="attack4">
+                  <option ng-selected="{{attack.value == pokemon.attacks.moveIndex4}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                    {{attack.name}}
+                  </option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="number" ng-model="pokemon.attacks.currentPP4" class="form-control" id="currentPP4">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="number" ng-model="pokemon.attacks.ppUps4" class="form-control" id="ppUps4">
+              </div>
+            </td>
+          </tr>
+      </table>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="relearnedMove1">Relearned 1</label>
+            <select ng-model="pokemon.attacks.relearnedMove1" class="form-control" id="relearnedMove1">
+              <option ng-selected="{{attack.value == pokemon.attacks.relearnedMove1}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                {{attack.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="relearnedMove2">Relearned 2</label>
+            <select ng-model="pokemon.attacks.relearnedMove2" class="form-control" id="relearnedMove2">
+              <option ng-selected="{{attack.value == pokemon.attacks.relearnedMove2}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                {{attack.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="relearnedMove3">Relearned 3</label>
+            <select ng-model="pokemon.attacks.relearnedMove3" class="form-control" id="relearnedMove3">
+              <option ng-selected="{{attack.value == pokemon.attacks.relearnedMove3}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                {{attack.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="relearnedMove4">Relearned 4</label>
+            <select ng-model="pokemon.attacks.relearnedMove4" class="form-control" id="relearnedMove4">
+              <option ng-selected="{{attack.value == pokemon.attacks.relearnedMove4}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                {{attack.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-show="selectedTab == 'caught'">
+    <form role="form">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="trainerName">Trainer Name</label>
+            <input ng-model="pokemon.caught.trainerName" class="form-control" id="trainerName">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="caughtTrainerFemale" ng-model="pokemon.caught.caughtTrainerFemale">Trainer Female
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="trainerID">Trainer ID</label>
+            <input type="number" ng-model="pokemon.caught.trainerID" class="form-control" id="trainerID">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="secretId">Secret ID</label>
+            <input type="number" ng-model="pokemon.caught.secretId" class="form-control" id="secretId">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="caughtLanguage">Language</label>
+            <select ng-model="pokemon.caught.caughtLanguage" class="form-control" id="caughtLanguage">
+              <option ng-selected="{{language.value == pokemon.caught.caughtLanguage}}"ng-repeat="language in languageList" value="{{language.value}}">
+                {{language.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="caught3DSRegion">3DS Region</label>
+            <select ng-model="pokemon.caught.caught3DSRegion" class="form-control" id="caught3DSRegion">
+              <option ng-selected="{{region.value == pokemon.caught.caught3DSRegion}}"ng-repeat="region in nintendo3DSRegionList" value="{{region.value}}">
+                {{region.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="caughtCountry">Country</label>
+            <select ng-model="pokemon.caught.caughtCountry" class="form-control" id="caughtCountry">
+              <option ng-selected="{{country.value == pokemon.caught.caughtCountry}}"ng-repeat="country in countryList" value="{{country.value}}">
+                {{country.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="region">Region</label>
+            <input type="number" ng-model="pokemon.caught.caughtRegion" class="form-control" id="region">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="caughtLevel">Caught Level</label>
+            <input type="number" ng-model="pokemon.caught.caughtLevel" class="form-control" id="caughtLevel">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="pokeball">Pokeball</label>
+            <select ng-model="pokemon.caught.pokeball" class="form-control" id="pokeball">
+              <option ng-selected="{{pokeball.value == pokemon.caught.pokeball}}"ng-repeat="pokeball in pokeballList" value="{{pokeball.value}}">
+                {{pokeball.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="caughtGame">Caught Game</label>
+            <select ng-model="pokemon.caught.caughtGame" class="form-control" id="caughtGame">
+              <option ng-selected="{{game.value == pokemon.caught.caughtGame}}"ng-repeat="game in gameList" value="{{game.value}}">
+                {{game.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="metLocation">Met Location</label>
+            <select ng-model="pokemon.caught.metLocation" class="form-control" id="metLocation">
+              <option ng-selected="{{location.value == pokemon.caught.metLocation}}"ng-repeat="location in locationList" value="{{location.value}}">
+                {{location.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="metYear">Met Year</label>
+            <input type="number" ng-model="pokemon.caught.metYear" class="form-control" id="metYear">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="metMonth">Met Month</label>
+            <input type="number" ng-model="pokemon.caught.metMonth" class="form-control" id="metMonth">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="metDay">Met Day</label>
+            <input type="number" ng-model="pokemon.caught.metDay" class="form-control" id="metDay">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="eggLocation">Egg Location</label>
+            <select ng-model="pokemon.caught.eggLocation" class="form-control" id="eggLocation">
+              <option ng-selected="{{location.value == pokemon.caught.eggLocation}}"ng-repeat="location in locationList" value="{{location.value}}">
+                {{location.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="eggYear">Egg Year</label>
+            <input type="number" ng-model="pokemon.caught.eggYear" class="form-control" id="eggYear">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="eggMonth">Egg Month</label>
+            <input type="number" ng-model="pokemon.caught.eggMonth" class="form-control" id="eggMonth">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="eggDay">Egg Day</label>
+            <input type="number" ng-model="pokemon.caught.eggDay" class="form-control" id="eggDay">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-show="selectedTab == 'genetics'">
+    <form role="form">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="hpIV">HP IV</label>
+            <input type="number" ng-model="pokemon.genetics.hpIV" class="form-control" id="hpIV">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="attackIV">Attack IV</label>
+            <input type="number" ng-model="pokemon.genetics.attackIV" class="form-control" id="attackIV">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="defenseIV">Defense IV</label>
+            <input type="number" ng-model="pokemon.genetics.defenseIV" class="form-control" id="defenseIV">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="speedIV">Speed IV</label>
+            <input type="number" ng-model="pokemon.genetics.speedIV" class="form-control" id="speedIV">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="specialAttackIV">Special Attack IV</label>
+            <input type="number" ng-model="pokemon.genetics.specialAttackIV" class="form-control" id="specialAttackIV">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="specialDefenseIV">Special Defense IV</label>
+            <input type="number" ng-model="pokemon.genetics.specialDefenseIV" class="form-control" id="specialDefenseIV">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="hyperTrainedHP" ng-model="pokemon.genetics.hyperTrainedHP">Hyper Training HP
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="hyperTrainedAttack" ng-model="pokemon.genetics.hyperTrainedAttack">Hyper Training Attack
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="hyperTrainedDefense" ng-model="pokemon.genetics.hyperTrainedDefense">Hyper Training Defense
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="hyperTrainedSpeed" ng-model="pokemon.genetics.hyperTrainedSpeed">Hyper Training Speed
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="hyperTrainedSpecialAttack" ng-model="pokemon.genetics.hyperTrainedSpecialAttack">Hyper Training Special Attack
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="hyperTrainedSpecialDefense" ng-model="pokemon.genetics.hyperTrainedSpecialDefense">Hyper Training Special Defense
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="personalityValue">Personality</label>
+            <input type="number" ng-model="pokemon.genetics.personalityValue" class="form-control" id="personalityValue">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="nature">Nature</label>
+            <select ng-model="pokemon.genetics.nature" class="form-control" id="nature">
+              <option ng-selected="{{nature.value == pokemon.genetics.nature}}"ng-repeat="nature in natureList" value="{{nature.value}}">
+                {{nature.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="encryptionKey">Encryption Key</label>
+            <input type="number" ng-model="pokemon.genetics.encryptionKey" class="form-control" id="encryptionKey">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="ability">Ability</label>
+            <select ng-model="pokemon.genetics.ability" class="form-control" id="ability">
+              <option ng-selected="{{ability.value == pokemon.genetics.ability}}"ng-repeat="ability in abilityList" value="{{ability.value}}">
+                {{ability.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="abilityNumber">Ability Number</label>
+            <select ng-model="pokemon.genetics.abilityNumber" class="form-control" id="abilityNumber">
+              <option ng-selected="{{abilityNumber.value == pokemon.genetics.abilityNumber}}"ng-repeat="abilityNumber in abilityNumberList" value="{{abilityNumber.value}}">
+                {{abilityNumber.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="pokerusStrain">Pokerus Strain</label>
+            <input type="number" ng-model="pokemon.genetics.pokerusStrain" class="form-control" id="pokerusStrain">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="pokerusDuration">Pokerus Duration</label>
+            <input type="number" ng-model="pokemon.genetics.pokerusDuration" class="form-control" id="pokerusDuration">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="fateful" ng-model="pokemon.genetics.fateful">Fateful Encounter
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="female" ng-model="pokemon.genetics.female">Female
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="genderless" ng-model="pokemon.genetics.genderless">Genderless
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="alternateForme1" ng-model="pokemon.genetics.alternateForme1">Forme 1
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="alternateForme2" ng-model="pokemon.genetics.alternateForme2">Forme 2
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="alternateForme3" ng-model="pokemon.genetics.alternateForme3">Forme 3
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="alternateForme4" ng-model="pokemon.genetics.alternateForme4">Forme 4
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="alternateForme5" ng-model="pokemon.genetics.alternateForme5">Forme 5
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="circleMark" ng-model="pokemon.genetics.circleMark">Mark 1
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="triangleMark" ng-model="pokemon.genetics.triangleMark">Mark 2
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="squareMark" ng-model="pokemon.genetics.squareMark">Mark 3
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="heartMark" ng-model="pokemon.genetics.heartMark">Mark 4
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="diamondMark" ng-model="pokemon.genetics.diamondMark">Mark 5
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="starMark" ng-model="pokemon.genetics.starMark">Mark 6
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-show="selectedTab == 'ribbons'">
+    <form role="form">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="kalosChamp" ng-model="pokemon.ribbons.kalosChamp">Kalos Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="champion" ng-model="pokemon.ribbons.champion">Champion
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="sinnohChamp" ng-model="pokemon.ribbons.sinnohChamp">Sinnoh Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="bestFriends" ng-model="pokemon.ribbons.bestFriends">Best Friends
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="training" ng-model="pokemon.ribbons.training">Training
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="skillfulBattler" ng-model="pokemon.ribbons.skillfulBattler">Skillful Battler
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="expertBattler" ng-model="pokemon.ribbons.expertBattler">Expert Battler
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="effort" ng-model="pokemon.ribbons.effort">Effort
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="alert" ng-model="pokemon.ribbons.alert">Alert
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="shock" ng-model="pokemon.ribbons.shock">Shock
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="downcast" ng-model="pokemon.ribbons.downcast">Downcast
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="careless" ng-model="pokemon.ribbons.careless">Careless
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="relax" ng-model="pokemon.ribbons.relax">Relax
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="snooze" ng-model="pokemon.ribbons.snooze">Snooze
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="smile" ng-model="pokemon.ribbons.smile">Smile
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="gorgeous" ng-model="pokemon.ribbons.gorgeous">Gorgeous
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="royal" ng-model="pokemon.ribbons.royal">Royal
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="gorgeousRoyal" ng-model="pokemon.ribbons.gorgeousRoyal">Gorgeous Royal
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="artist" ng-model="pokemon.ribbons.artist">Artist
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="footprint" ng-model="pokemon.ribbons.footprint">Footprint
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="record" ng-model="pokemon.ribbons.record">Record
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="legend" ng-model="pokemon.ribbons.legend">Legend
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="country" ng-model="pokemon.ribbons.country">Country
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="national" ng-model="pokemon.ribbons.national">National
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="earth" ng-model="pokemon.ribbons.earth">Earth
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="world" ng-model="pokemon.ribbons.world">World
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="classic" ng-model="pokemon.ribbons.classic">Classic
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="premier" ng-model="pokemon.ribbons.premier">Premier
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="event" ng-model="pokemon.ribbons.event">Event
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="birthday" ng-model="pokemon.ribbons.birthday">Birthday
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="special" ng-model="pokemon.ribbons.special">Special
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="souvenir" ng-model="pokemon.ribbons.souvenir">Souvenir
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="wishing" ng-model="pokemon.ribbons.wishing">Wishing
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="battleChampion" ng-model="pokemon.ribbons.battleChampion">Battle Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="regionalChampion" ng-model="pokemon.ribbons.regionalChampion">Regional Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="nationalChampion" ng-model="pokemon.ribbons.nationalChampion">National Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="worldChampion" ng-model="pokemon.ribbons.worldChampion">World Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="hoennChampion" ng-model="pokemon.ribbons.hoennChampion">Hoenn Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="contestStar" ng-model="pokemon.ribbons.contestStar">Contest Star
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="coolMaster" ng-model="pokemon.ribbons.coolMaster">Cool Master
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="beautyMaster" ng-model="pokemon.ribbons.beautyMaster">Beauty Master
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="cuteMaster" ng-model="pokemon.ribbons.cuteMaster">Cute Master
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="smartMaster" ng-model="pokemon.ribbons.smartMaster">Smart Master
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="toughMaster" ng-model="pokemon.ribbons.toughMaster">Tough Master
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="alolaChampion" ng-model="pokemon.ribbons.alolaChampion">Alola Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="royalChampion" ng-model="pokemon.ribbons.royalChampion">Royal Champ
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="treeGreat" ng-model="pokemon.ribbons.treeGreat">Tree Great
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="treeMaster" ng-model="pokemon.ribbons.treeMaster">Tree Master
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div><br></div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="contestMemory">Contest Memory</label>
+            <input type="number" ng-model="pokemon.ribbons.contestMemory" class="form-control" id="contestMemory">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="towerMemory">Tower Memory</label>
+            <input type="number" ng-model="pokemon.ribbons.towerMemory" class="form-control" id="towerMemory">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-show="selectedTab == 'medals'">
+    <form role="form">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="training1" ng-model="pokemon.medals.training1">Practice against Scatterbug!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="training2" ng-model="pokemon.medals.training2">Get Spewpa with an Energy Shot!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="spAtkLevel1" ng-model="pokemon.medals.spAtkLevel1">Hone Sp. Atk with Magnemite!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="hpLevel1" ng-model="pokemon.medals.hpLevel1">Raise Your HP with Wailmer!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="atkLevel1" ng-model="pokemon.medals.atkLevel1">Boost Attack with Axew!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="spDefLevel1" ng-model="pokemon.medals.spDefLevel1">Build Up Sp. Def with Tentacool!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="speedLevel1" ng-model="pokemon.medals.speedLevel1">Speed Up with the Noibat Regimen!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="defLevel1" ng-model="pokemon.medals.defLevel1">Strengthen Defense with Geodude!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="spAtkLevel2" ng-model="pokemon.medals.spAtkLevel2">Home In on Magneton!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="hpLevel2" ng-model="pokemon.medals.hpLevel2">Hit Relicanth's Weak Points!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="atkLevel2" ng-model="pokemon.medals.atkLevel2">Let Loose to Get Fraxure!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="spDefLevel2" ng-model="pokemon.medals.spDefLevel2">Watch Out for Tentacruel's Bitbots!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="speedLevel2" ng-model="pokemon.medals.speedLevel2">Hammer Aerodactyl with High-Speed Shots!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="defLevel2" ng-model="pokemon.medals.defLevel2">Break Down Graveler's Barrier!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="spAtkLevel3" ng-model="pokemon.medals.spAtkLevel3">Shake Off That Uncanny Magnezone!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="hpLevel3" ng-model="pokemon.medals.hpLevel3">Shoot Back! Get the Giant Wailord!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="atkLevel3" ng-model="pokemon.medals.atkLevel3">Catch 'Em! Haxorus's Furious Attacks!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="spDefLevel3" ng-model="pokemon.medals.spDefLevel3">Kick Out! Get the Dragalge Corps!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="speedLevel3" ng-model="pokemon.medals.speedLevel3">Catch It! Noivern's Wild Wind!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="defLevel3" ng-model="pokemon.medals.defLevel3">Break It! Golem's Defensive Line!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="troubles" ng-model="pokemon.medals.troubles">The Troubles Keep on Coming?!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="leafStone" ng-model="pokemon.medals.leafStone">The Leaf Stone Cup Begins!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="fireStone" ng-model="pokemon.medals.fireStone">The Fire Stone Cup Begins!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="waterStone" ng-model="pokemon.medals.waterStone">The Water Stone Cup Begins!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="fleeingGoals" ng-model="pokemon.medals.fleeingGoals">Follow Those Fleeing Goals!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="watchOut" ng-model="pokemon.medals.watchOut">Watch Out! That's One Tricky Second Half!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="lightningQuick" ng-model="pokemon.medals.lightningQuick">An Opening of Lightning-Quick Attacks!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="longShots" ng-model="pokemon.medals.longShots">Those Long Shots Are No Long Shot!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="scatterbug" ng-model="pokemon.medals.scatterbug">Scatterbug Lugs Back!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="barrage" ng-model="pokemon.medals.barrage">A Barrage of Bitbots!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="hydreigon" ng-model="pokemon.medals.hydreigon">Drag Down Hydreigon!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="battleForBest" ng-model="pokemon.medals.battleForBest">The Battle for the Best!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="juttingJaws" ng-model="pokemon.medals.juttingJaws">Fearsome! Twin Tales of Jutting Jaws!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="zipped" ng-model="pokemon.medals.zipped">Danger Zipped Up Tight!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="stuckStrong" ng-model="pokemon.medals.stuckStrong">Stuck between the Strong and the Strong!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="dazzling" ng-model="pokemon.medals.dazzling">Dazzling! A Dizzying Dance of Spoons!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="magikarp" ng-model="pokemon.medals.magikarp">What an Upstart! Magikarp Is Moving Up!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="multipleMega" ng-model="pokemon.medals.multipleMega">Watch It! Multiple Mega Evolutions!
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="checkbox">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="secretSuperTraining" ng-model="pokemon.medals.secretSuperTraining">Secret Super Training
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="trainingBag">Training Bag</label>
+            <select ng-model="pokemon.medals.trainingBag" class="form-control" id="trainingBag">
+              <option ng-selected="{{trainingBag.value == pokemon.medals.trainingBag}}"ng-repeat="trainingBag in trainingBagList" value="{{trainingBag.value}}">
+                {{trainingBag.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="hitsRemaining">Hits Remaining</label>
+            <input type="number" ng-model="pokemon.medals.hitsRemaining" class="form-control" id="hitsRemaining">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-show="selectedTab == 'history'">
+    <form role="form">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="handlerFriendship">Friendship</label>
+            <input type="number" ng-model="pokemon.history.handlerFriendship" class="form-control" id="handlerFriendship">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="handlerAffection">Affection</label>
+            <input type="number" ng-model="pokemon.history.handlerAffection" class="form-control" id="handlerAffection">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="handlerMemoryIntensity">Memory Intensity</label>
+            <select ng-model="pokemon.history.handlerMemoryIntensity" class="form-control" id="handlerMemoryIntensity">
+              <option ng-selected="{{memoryIntensity.value == pokemon.history.handlerMemoryIntensity}}"ng-repeat="memoryIntensity in memoryIntensityList" value="{{memoryIntensity.value}}">
+                {{memoryIntensity.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="handlerMemoryLine">Memory Line</label>
+            <select ng-model="pokemon.history.handlerMemoryLine" ng-change="selectHandlerMemory()" class="form-control" id="handlerMemoryLine">
+              <option ng-selected="{{memoryTemplate.value == pokemon.history.handlerMemoryLine}}" ng-repeat="memoryTemplate in memoryTemplateList" value="{{memoryTemplate.value}}">
+                {{memoryTemplate.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div ng-show="handlerMemoryLine.varTextType == 1" class="form-group">
+            <label for="handlerMemoryTextVarGeneral">General Location</label>
+            <select ng-model="pokemon.history.handlerMemoryTextVar" class="form-control" id="handlerMemoryTextVarGeneral">
+              <option ng-selected="{{generalLocation.value == pokemon.history.handlerMemoryTextVar}}"ng-repeat="generalLocation in generalLocationList" value="{{generalLocation.value}}">
+                {{generalLocation.name}}
+              </option>
+            </select>
+          </div>
+          <div ng-show="handlerMemoryLine.varTextType == 2" class="form-group">
+            <label for="handlerMemoryTextVarItem">Item</label>
+            <select ng-model="pokemon.history.handlerMemoryTextVar" class="form-control" id="handlerMemoryTextVarItem">
+              <option ng-selected="{{item.value == pokemon.history.handlerMemoryTextVar}}"ng-repeat="item in itemList" value="{{item.value}}">
+                {{item.name}}
+              </option>
+            </select>
+          </div>
+          <div ng-show="handlerMemoryLine.varTextType == 3" class="form-group">
+            <label for="handlerMemoryTextVarItem">Location</label>
+            <select ng-model="pokemon.history.handlerMemoryTextVar" class="form-control" id="handlerMemoryTextVarItem">
+              <option ng-selected="{{location.value == pokemon.history.handlerMemoryTextVar}}"ng-repeat="location in locationList" value="{{location.value}}">
+                {{location.name}}
+              </option>
+            </select>
+          </div>
+          <div ng-show="handlerMemoryLine.varTextType == 4" class="form-group">
+            <label for="handlerMemoryTextVarItem">Species</label>
+            <select ng-model="pokemon.history.handlerMemoryTextVar" class="form-control" id="handlerMemoryTextVarItem">
+              <option ng-selected="{{pokemon.index == pokemon.history.handlerMemoryTextVar}}"ng-repeat="pokemon in pokemonList" value="{{pokemon.index}}">
+                {{pokemon.name}}
+              </option>
+            </select>
+          </div>
+          <div ng-show="handlerMemoryLine.varTextType == 5" class="form-group">
+            <label for="handlerMemoryTextVarItem">Attack</label>
+            <select ng-model="pokemon.history.handlerMemoryTextVar" class="form-control" id="handlerMemoryTextVarItem">
+              <option ng-selected="{{attack.value == pokemon.history.handlerMemoryTextVar}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                {{attack.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="handlerMemoryFeeling">Memory Feeling</label>
+            <select ng-model="pokemon.history.handlerMemoryFeeling" class="form-control" id="handlerMemoryFeeling">
+              <option ng-selected="{{memoryFeeling.value == pokemon.history.handlerMemoryFeeling}}"ng-repeat="memoryFeeling in memoryFeelingList" value="{{memoryFeeling.value}}">
+                {{memoryFeeling.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="handlerName">Handler Name</label>
+            <input ng-model="pokemon.history.handlerName" class="form-control" id="handlerName">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="handlerFemale" ng-model="pokemon.history.handlerFemale">Handler Female
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="checkbox-inline">
+                  <input type="checkbox" name="handlerNotTrainer" ng-model="pokemon.history.handlerNotTrainer">Handler Not Trainer
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-show="selectedTab == 'memories'">
+    <form role="form">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="fullness">Fullness</label>
+            <input type="number" ng-model="pokemon.memories.fullness" class="form-control" id="fullness">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="enjoyment">Enjoyment</label>
+            <input type="number" ng-model="pokemon.memories.enjoyment" class="form-control" id="enjoyment">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="friendship">Friendship</label>
+            <input type="number" ng-model="pokemon.memories.friendship" class="form-control" id="friendship">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="affection">Affection</label>
+            <input type="number" ng-model="pokemon.memories.affection" class="form-control" id="affection">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="memoryIntensity">Memory Intensity</label>
+            <select ng-model="pokemon.memories.memoryIntensity" class="form-control" id="memoryIntensity">
+              <option ng-selected="{{memoryIntensity.value == pokemon.memories.memoryIntensity}}"ng-repeat="memoryIntensity in memoryIntensityList" value="{{memoryIntensity.value}}">
+                {{memoryIntensity.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="memoryLine">Memory Line</label>
+            <select ng-model="pokemon.memories.memoryLine" ng-change="selectMemory()" class="form-control" id="memoryLine">
+              <option ng-selected="{{memoryTemplate.value == pokemon.memories.memoryLine}}" ng-repeat="memoryTemplate in memoryTemplateList" value="{{memoryTemplate.value}}">
+                {{memoryTemplate.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div ng-show="memoryLine.varTextType == 1" class="form-group">
+            <label for="memoryTextVarGeneral">General Location</label>
+            <select ng-model="pokemon.memories.memoryTextVar" class="form-control" id="memoryTextVarGeneral">
+              <option ng-selected="{{generalLocation.value == pokemon.memories.memoryTextVar}}"ng-repeat="generalLocation in generalLocationList" value="{{generalLocation.value}}">
+                {{generalLocation.name}}
+              </option>
+            </select>
+          </div>
+          <div ng-show="memoryLine.varTextType == 2" class="form-group">
+            <label for="memoryTextVarItem">Item</label>
+            <select ng-model="pokemon.memories.memoryTextVar" class="form-control" id="memoryTextVarItem">
+              <option ng-selected="{{item.value == pokemon.memories.memoryTextVar}}"ng-repeat="item in itemList" value="{{item.value}}">
+                {{item.name}}
+              </option>
+            </select>
+          </div>
+          <div ng-show="memoryLine.varTextType == 3" class="form-group">
+            <label for="memoryTextVarItem">Location</label>
+            <select ng-model="pokemon.memories.memoryTextVar" class="form-control" id="memoryTextVarItem">
+              <option ng-selected="{{location.value == pokemon.memories.memoryTextVar}}"ng-repeat="location in locationList" value="{{location.value}}">
+                {{location.name}}
+              </option>
+            </select>
+          </div>
+          <div ng-show="memoryLine.varTextType == 4" class="form-group">
+            <label for="memoryTextVarItem">Species</label>
+            <select ng-model="pokemon.memories.memoryTextVar" class="form-control" id="memoryTextVarItem">
+              <option ng-selected="{{pokemon.index == pokemon.memories.memoryTextVar}}"ng-repeat="pokemon in pokemonList" value="{{pokemon.index}}">
+                {{pokemon.name}}
+              </option>
+            </select>
+          </div>
+          <div ng-show="memoryLine.varTextType == 5" class="form-group">
+            <label for="memoryTextVarItem">Attack</label>
+            <select ng-model="pokemon.memories.memoryTextVar" class="form-control" id="memoryTextVarItem">
+              <option ng-selected="{{attack.value == pokemon.memories.memoryTextVar}}"ng-repeat="attack in attackList" value="{{attack.value}}">
+                {{attack.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="memoryFeeling">Memory Feeling</label>
+            <select ng-model="pokemon.memories.memoryFeeling" class="form-control" id="memoryFeeling">
+              <option ng-selected="{{memoryFeeling.value == pokemon.memories.memoryFeeling}}"ng-repeat="memoryFeeling in memoryFeelingList" value="{{memoryFeeling.value}}">
+                {{memoryFeeling.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div><br></div>
+  <button ng-click="download(pokemon)" class="btn btn-default">Download</button>
+  <button ng-click="toPK6(pokemon)" class="btn btn-default">To PK6</button>
+  <button ng-click="clear(pokemon)" class="btn btn-default">Clear</button>
+  <button ng-click="cancel()" class="btn btn-default">Cancel</button>
+
+</div>
+<div><br></div>
+</body>
+</html>

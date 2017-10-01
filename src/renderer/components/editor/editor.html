@@ -1,0 +1,468 @@
+<html>
+
+<head>
+  <!--CSS-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="./editor/editor.css">
+  <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../style.css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/materialize.css">
+
+  <link rel="stylesheet" href="css/main.css">
+  <!--loader-->
+
+
+  <!--JS-->
+  <script
+    src="https://code.jquery.com/jquery-2.2.4.js"
+    integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
+  <script src="../../js/jqBootstrapValidation.js"></script>
+  <script src="../../js/blocs.min.js"></script>
+  <script src="../../js/materialize.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/formHandler.js"></script>
+  <script src="vendor/bootstrap.min.js"></script>
+  <script src="vendor/angular.min.js"></script>
+  <script src="vendor/FileSaver.min.js"></script>
+  <script src="editor.js"></script>
+  <script src="util/pk6To7Converter.js"></script>
+  <script src="util/littleEndian.js"></script>
+  <script src="pk6/pk6Data.js"></script>
+  <script src="pk7/pk7Charset.js"></script>
+  <script src="pk7/pk7IO.js"></script>
+  <script src="pk7/pk7Data.js"></script>
+  <script>
+    editor.service('pk7Download', ['pk7IO', function(pk7IO) {
+
+      document.getElementById("pokedexNumber.name");
+
+      this.download = function(pokemon) {
+        var bytes = pk7IO.toBytes(pokemon);
+        var blob = new Blob([bytes], {
+          type: "application/octet-stream"
+        });
+        var numero = document.getElementById("pokedexNumber").value;
+        saveAs(blob, numero + ".pk7");
+
+      };
+
+    }]);
+  </script>
+  <script src="pk7/pk7EditController.js"></script>
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  <!--loader-->
+  <script src="js/main.js"></script>
+  <!--loader-->
+</head>
+
+<body>
+
+  <!--loader-->
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
+
+  <!--Barra de navegación-->
+  <div class="bloc bgc-carmine-pink d-bloc" id="bloc-0">
+    <!--color de la barra-->
+    <div class="container bloc-sm">
+      <nav class="navbar row">
+        <div class="navbar-header">
+          <a class="navbar-brand hidden-xs hidden-sm ltc-white" href="index.html">DexIO</a>
+        </div>
+        <div class="navbar-collapse navbar-1 collapse">
+          <ul class="site-navigation nav navbar-nav">
+            <li>
+              <a href="../../index.html">Inicio</a>
+            </li>
+            <li>
+              <a href="../../spanish/claro/pokedex.html">Pokedex</a>
+            </li>
+            <li>
+              <a href="../../spanish/claro/editor.html">Editor</a>
+            </li>
+            <li>
+              <a href="../../spanish/claro/calculadora.html">Calculadora</a>
+            </li>
+            <li>
+              <a href="../../spanish/claro/equipos.html">Equipos</a>
+            </li>
+            <li>
+              <a href="../../spanish/claro/sobre-dexio.html">Sobre DexIO</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!--editor-->
+
+  <body ng-app="editor">
+    <div ng-controller="pk7EditController">
+      <div class="fixed-action-btn horizontal click-to-toggle">
+   <a class="btn-floating btn-large red">
+     <i class="material-icons">menu</i>
+   </a>
+   <ul>
+     <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+     <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+     <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+     <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+   </ul>
+ </div>
+
+      <!--tarjetas-->
+      <div class="carddatos">
+        <span class="titulo">Datos del pokemon</span>
+        <!--Pokemon-->
+        <select ng-model="pokemon.core.pokedexNumber" class="datos1" id="pokedexNumber">
+     <option ng-selected="{{data.index == pokemon.core.pokedexNumber}}"ng-repeat="data in pokemonList" value="{{data.index}}">
+        {{data.name}}
+     </option>
+  </select>
+        <!--exp y nivel-->
+        <span class="datoslvl">Exp:</span><input class="xp" type="number" ng-model="pokemon.core.experience" placeholder="Experincia" id="experience">
+        <span class="datoslvl">Nivel:</span><input class="level" type="number" placeholder="Nivel" id="level">
+        <!--Mote-->
+        <br><input ng-model="pokemon.core.nickname" placeholder="Mote" class="mote" id="nickname" maxlength="10">
+        <input type="checkbox" class="tick" name="nicknamed" ng-model="pokemon.core.nicknamed">
+        <!--Naturaleza-->
+        <br>
+        <div class="pokeball"><img src="../../img/pokeball.png" height="100px" width="100px">
+          <span id="demo" class="pokeimg" height="100px" width="100px">
+      <img src="../../img/0.png" height="100px" width="100px">
+    </span>
+        </div>
+        <select ng-model="pokemon.genetics.nature" class="datos" id="nature">
+     <option ng-selected="{{nature.value == pokemon.genetics.nature}}"  ng-repeat="nature in natureList" value="{{nature.value}}">
+        {{nature.name}}
+     </option>
+  </select>
+        <br><select ng-model="pokemon.genetics.ability" class="datos" id="ability">
+     <option ng-selected="{{ability.value == pokemon.genetics.ability}}" ng-repeat="ability in abilityList" value="{{ability.value}}">
+        {{ability.name}}
+     </option>
+  </select>
+        <br><select ng-model="pokemon.history.handlerMemoryTextVar" class="datos" id="handlerMemoryTextVarItem">
+     <option ng-selected="{{item.value == pokemon.history.handlerMemoryTextVar}}" ng-repeat="item in itemList" value="{{item.value}}">
+        {{item.name}}
+     </option>
+  </select>
+      </div>
+      <div class="cardiv">
+        <span class="titulo">Genética</span>
+        <br>
+        <table>
+          <thead>
+            <tr>
+              <th>
+              </th>
+              <th>
+                EVs
+              </th>
+              <th>
+                IVs
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                PS
+              </td>
+              <td>
+                <input type="number" name="EV" ng-model="pokemon.core.hpEV" class="level" min="0" max="252" id="hpEV"></input>
+              </td>
+              <td>
+                <input type="number" name="IV" ng-model="pokemon.genetics.hpIV" class="level" min="0" max="31" id="hpIV">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Ataque
+              </td>
+              <td>
+                <input type="number" name="EV" ng-model="pokemon.core.attackEV" class="level" min="0" max="252" id="attakEV"></input>
+              </td>
+              <td>
+                <input type="number" name="IV" ng-model="pokemon.genetics.attackIV" class="level" min="0" max="31" id="attakIV">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Defensa
+              </td>
+              <td>
+                <input type="number" name="EV" ng-model="pokemon.core.defenseEV" class="level" min="0" max="252" id="defenseEV"></input>
+              </td>
+              <td>
+                <input type="number" name="IV" ng-model="pokemon.genetics.defenseIV" class="level" min="0" max="31" id="defenseIV">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Ataque Especial
+              </td>
+              <td>
+                <input type="number" name="EV" ng-model="pokemon.core.specialAttackEV" class="level" min="0" max="252" id="specialAttackEV"></input>
+              </td>
+              <td>
+                <input type="number" name="IV" ng-model="pokemon.genetics.specialAttackIV" class="level" min="0" max="31" id="specialAttackIV">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Defensa Especial
+              </td>
+              <td>
+                <input type="number" name="EV" ng-model="pokemon.core.specialDefenseEV" class="level" min="0" max="252" id="specialDefenseEV"></input>
+              </td>
+              <td>
+                <input type="number" name="IV" ng-model="pokemon.genetics.specialDefenseIV" class="level" min="0" max="31" id="specialDefenseIV">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Velocidad
+              </td>
+              <td>
+                <input type="number" name="EV" ng-model="pokemon.core.speedEV" class="level" min="0" max="252" id="speedEV"></input>
+              </td>
+              <td>
+                <input type="number" name="IV" ng-model="pokemon.genetics.speedIV" class="level" min="0" max="31" id="speedIV">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Total
+              </td>
+              <td>
+                <input type="number" name="EV" ng-model="pokemon.core.totalEV" class="level" min="0" id="totalEV"></input>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cardataques">
+        <span class="titulo">Ataques</span>
+        <table class="ataques">
+          <thead>
+            <th>Ataque</th>
+            <th>PP actuales</th>
+            <th>Más PP</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <select ng-model="pokemon.attacks.moveIndex1" class="ataque" id="attack1">
+                 <option ng-selected="{{attack.value == pokemon.attacks.moveIndex1}}" ng-repeat="attack in attackList" value="{{attack.value}}">
+                    {{attack.name}}
+                 </option>
+              </select>
+            </td>
+            <td>
+              <input type="number" ng-model="pokemon.attacks.currentPP1" class="level" id="currentPP1">
+            </td>
+            <td>
+              <input type="number" ng-model="pokemon.attacks.ppUps1" class="level" min="0" max="3" id="ppUps1">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <select ng-model="pokemon.attacks.moveIndex2" class="ataque" id="attack2">
+                 <option ng-selected="{{attack.value == pokemon.attacks.moveIndex2}}" ng-repeat="attack in attackList" value="{{attack.value}}">
+                    {{attack.name}}
+                 </option>
+              </select>
+            </td>
+            <td>
+              <input type="number" ng-model="pokemon.attacks.currentPP2" class="level" id="currentPP2">
+            </td>
+            <td>
+              <input type="number" ng-model="pokemon.attacks.ppUps2" class="level" min="0" max="3" id="ppUps2">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <select ng-model="pokemon.attacks.moveIndex3" class="ataque" id="attack3">
+                 <option ng-selected="{{attack.value == pokemon.attacks.moveIndex3}}" ng-repeat="attack in attackList" value="{{attack.value}}">
+                    {{attack.name}}
+                 </option>
+              </select>
+            </td>
+            <td>
+              <input type="number" ng-model="pokemon.attacks.currentPP3" class="level" id="currentPP3">
+            </td>
+            <td>
+              <input type="number" ng-model="pokemon.attacks.ppUps3" class="level" min="0" max="3" id="ppUps3">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <select ng-model="pokemon.attacks.moveIndex4" class="ataque" id="attack4">
+                 <option ng-selected="{{attack.value == pokemon.attacks.moveIndex4}}" ng-repeat="attack in attackList" value="{{attack.value}}">
+                    {{attack.name}}
+                 </option>
+              </select>
+            </td>
+            <td>
+              <input type="number" ng-model="pokemon.attacks.currentPP4" class="level" id="currentPP4">
+            </td>
+            <td>
+              <input type="number" ng-model="pokemon.attacks.ppUps4" class="level" min="0" max="4" id="ppUps4">
+            </td>
+          </tr>
+        </tbody>
+        </table>
+        <table class="ataques">
+          <tbody>
+            <tr>
+              <td>Primer Movimiento Recordado</td>
+              <td>Segundo Movimiento Recordado</td>
+            </tr>
+            <tr>
+              <td>
+                <select ng-model="pokemon.attacks.relearnedMove1" class="ataque" id="relearnedMove1">
+                   <option ng-selected="{{attack.value == pokemon.attacks.relearnedMove1}}" ng-repeat="attack in attackList" value="{{attack.value}}">
+                      {{attack.name}}
+                   </option>
+                </select>
+              </td>
+              <td>
+                <select ng-model="pokemon.attacks.relearnedMove2" class="ataque" id="relearnedMove2">
+                   <option ng-selected="{{attack.value == pokemon.attacks.relearnedMove2}}" ng-repeat="attack in attackList" value="{{attack.value}}">
+                      {{attack.name}}
+                   </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Tercer Movimiento Recordado</td>
+              <td>Cuarto Movimiento Recordado</td>
+            </tr>
+            <tr>
+              <td>
+                <select ng-model="pokemon.attacks.relearnedMove3" class="ataque" id="relearnedMove3">
+                   <option ng-selected="{{attack.value == pokemon.attacks.relearnedMove3}}" ng-repeat="attack in attackList" value="{{attack.value}}">
+                      {{attack.name}}
+                   </option>
+                </select>
+              </td>
+              <td>
+                <select ng-model="pokemon.attacks.relearnedMove4" class="ataque" id="relearnedMove4">
+                   <option ng-selected="{{attack.value == pokemon.attacks.relearnedMove4}}" ng-repeat="attack in attackList" value="{{attack.value}}">
+                      {{attack.name}}
+                   </option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+       </div>
+       <div class="cardatrapado">
+         <span class="titulo">Atrapado en...</span>
+         <div class="labelAtrapado">
+            <label for="trainerName" class="">Nombre del entrenador</label>
+            <input ng-model="pokemon.caught.trainerName" class="atrapadoLabel" maxlength="12" id="trainerName">
+         </div>
+         <div class="switch">
+            <label>
+              Chico
+            <input type="checkbox" name="caughtTrainerFemale" ng-model="pokemon.caught.caughtTrainerFemale">
+            <span class="lever"></span>
+            Chica
+            </label>
+         </div>
+         <div class="labelID">
+            <label for="trainerID">ID del Entrenador</label>
+            <input type="number" min="0" max="65535" ng-model="pokemon.caught.trainerID" class="xp" id="trainerID">
+         </div>
+         <div class="labelIDS">
+            <label for="secretId">ID Secreto</label>
+            <input type="number" min='0' max="65535" ng-model="pokemon.caught.secretId" class="xp" id="secretId">
+         </div>
+         <div class="labelID">
+            <label for="caughtLanguage">Idioma</label>
+            <select ng-model="pokemon.caught.caughtLanguage" class="idiomaLabel" id="caughtLanguage">
+               <option ng-selected="{{language.value == pokemon.caught.caughtLanguage}}" ng-repeat="language in languageList" value="{{language.value}}">
+                  {{language.name}}
+               </option>
+            </select>
+         </div>
+         <div class="label3DS">
+            <label for="caught3DSRegion">Región 3DS</label>
+            <select ng-model="pokemon.caught.caught3DSRegion" class="regionLabel" id="caught3DSRegion">
+               <option ng-selected="{{region.value == pokemon.caught.caught3DSRegion}}" ng-repeat="region in nintendo3DSRegionList" value="{{region.value}}">
+                  {{region.name}}
+               </option>
+            </select>
+         </div>
+         <div class="labelPais">
+            <label for="caughtCountry">País</label>
+            <select ng-model="pokemon.caught.caughtCountry" class="paisLabel" id="caughtCountry">
+               <option ng-selected="{{country.value == pokemon.caught.caughtCountry}}" ng-repeat="country in countryList" value="{{country.value}}">
+                  {{country.name}}
+               </option>
+            </select>
+         </div>
+         <div class="labelRegion">
+            <label for="region">Región</label>
+            <input type="number" min="0" ng-model="pokemon.caught.caughtRegion" class="level" id="region">
+         </div>
+         <div class="labelNivel">
+            <label for="caughtLevel">Atrapado al Nivel</label>
+            <input type="number" ng-model="pokemon.caught.caughtLevel" class="Nivel" id="caughtLevel">
+         </div>
+         <div class="labelPokeball">
+            <label for="pokeball">Pokéball</label>
+            <select ng-model="pokemon.caught.pokeball" class="idiomaLabel" id="pokeball">
+               <option ng-selected="{{pokeball.value == pokemon.caught.pokeball}}" ng-repeat="pokeball in pokeballList" value="{{pokeball.value}}">
+                  {{pokeball.name}}
+               </option>
+            </select>
+         </div>
+
+
+
+
+
+
+
+
+       </div>
+          <!--imagen dependiendo el pokemon-->
+          <script>
+            function showSelectedItem() {
+              var item = "<img height=\"100px\" width=\"100px\" src=\"../../img/" + document.getElementById("pokedexNumber").value + ".png\">";
+              document.getElementById("demo").innerHTML = item;
+            }
+
+            document.getElementById("pokedexNumber").addEventListener("change", showSelectedItem);
+          </script>
+          <script>
+            editor.service('pk7Download', ['pk7IO', function(pk7IO) {
+
+              document.getElementById("pokedexNumber.name");
+
+              this.download = function(pokemon) {
+                var bytes = pk7IO.toBytes(pokemon);
+                var blob = new Blob([bytes], {
+                  type: "application/octet-stream"
+                });
+                var e = document.getElementById("pokedexNumber");
+                var nombre = e.options[e.selectedIndex].text;
+                saveAs(blob, nombre + ".pk7");
+
+              };
+
+            }]);
+          </script>
+  </body>

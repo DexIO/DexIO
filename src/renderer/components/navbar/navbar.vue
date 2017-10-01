@@ -36,6 +36,58 @@ export default {
 </script>
 
 <style>
+.col-1 {
+  width: 8.33%;
+}
+
+.col-2 {
+  width: 16.66%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.33%;
+}
+
+.col-5 {
+  width: 41.66%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.33%;
+}
+
+.col-8 {
+  width: 66.66%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.33%;
+}
+
+.col-11 {
+  width: 91.66%;
+}
+
+.col-12 {
+  width: 100%;
+}
+[class*="col-"] {
+    float: left;
+    padding: 30px;
+    padding-top: 10px;
+}
 input,
 label,
 select,
@@ -58,11 +110,13 @@ textarea {
 
 
 
+
 /* Remove the stupid outer glow in Webkit */
 
 input:focus {
   outline: 0;
 }
+
 
 
 
@@ -83,6 +137,7 @@ textarea {
 
 
 
+
 /* These elements are usually rendered a certain way by the browser */
 
 button,
@@ -96,6 +151,7 @@ select {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 
 
 
@@ -121,6 +177,7 @@ input[type=week] {}
 
 
 
+
 /* Button Controls
 -----------------------------------------------*/
 
@@ -133,10 +190,12 @@ input[type=radio] {
 
 
 
+
 /* File Uploads
 -----------------------------------------------*/
 
 input[type=file] {}
+
 
 
 
@@ -155,11 +214,13 @@ input[type=search] {
 
 
 
+
 /* Turn off the recent search for webkit. It adds about 15px padding on the left */
 
 ::-webkit-search-decoration {
   display: none;
 }
+
 
 
 
@@ -179,6 +240,7 @@ input[type="submit"] {
 
 
 
+
 /* IE8 and FF freak out if this rule is within another selector */
 
 ::-webkit-file-upload-button {
@@ -186,6 +248,7 @@ input[type="submit"] {
   border: 0;
   background: none;
 }
+
 
 
 
@@ -200,6 +263,7 @@ textarea {
   /* Turn off scroll bars in IE unless needed */
   overflow: auto;
 }
+
 
 
 
@@ -285,6 +349,7 @@ h4 {
   color: #ee4466;
   margin: 0px;
 }
+
 h5 {
   font-family: 'Fira Sans';
   font-size: 36px;
@@ -360,6 +425,6 @@ li:hover::after {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 </style>
