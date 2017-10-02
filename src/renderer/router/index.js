@@ -51,11 +51,6 @@ export default new Router({
       component: require('@/components/pokedex/1.vue'),
     },
     {
-      path: '/1',
-      name: '1',
-      component: require('@/components/pokedex/1.vue'),
-    },
-    {
       path: '/2',
       name: '2',
       component: require('@/components/pokedex/2.vue'),
