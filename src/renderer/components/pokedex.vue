@@ -1168,6 +1168,391 @@
         </div>
       </article>
 
+
+      <article class="block-item">
+        <img src="../assets/assets/img/84.png">
+        <div class="entry-content">
+          <h5>#084</h5>
+					<h5 class="entry-title">Doduo</h5>
+          <h5>Pokémon ave gemela</h5>
+          <p><normal></normal> <volador></volador></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/85.png">
+        <div class="entry-content">
+          <h5>#085</h5>
+					<h5 class="entry-title">Dodrio</h5>
+          <h5>Pokémon ave triple</h5>
+          <p><normal></normal> <volador></volador></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/86.png">
+        <div class="entry-content">
+          <h5>#086</h5>
+					<h5 class="entry-title">Seel</h5>
+          <h5>Pokémon león marino</h5>
+          <p><agua></agua> <hielo></hielo></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/87.png">
+        <div class="entry-content">
+          <h5>#087</h5>
+					<h5 class="entry-title">Dewgong</h5>
+          <h5>Pokémon león marino</h5>
+          <p><agua></agua> <hielo></hielo></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/88.png">
+        <div class="entry-content">
+          <h5>#088</h5>
+					<h5 class="entry-title">Grimer</h5>
+          <h5>Pokémon lodo</h5>
+          <p><veneno></veneno></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/88A.png">
+        <div class="entry-content">
+          <h5>#088</h5>
+					<h5 class="entry-title">Grimer Alola</h5>
+          <h5>Pokémon lodo</h5>
+          <p><veneno></veneno> <siniestro></siniestro></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/89.png">
+        <div class="entry-content">
+          <h5>#089</h5>
+					<h5 class="entry-title">Muk</h5>
+          <h5>Pokémon lodo</h5>
+          <p><veneno></veneno></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/89A.png">
+        <div class="entry-content">
+          <h5>#089</h5>
+					<h5 class="entry-title">Muk Alola</h5>
+          <h5>Pokémon lodo</h5>
+          <p><veneno></veneno> <siniestro></siniestro></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/90.png">
+        <div class="entry-content">
+          <h5>#090</h5>
+					<h5 class="entry-title">Shellder</h5>
+          <h5>Pokémon bivalvo</h5>
+          <p><agua></agua></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/91.png">
+        <div class="entry-content">
+          <h5>#091</h5>
+					<h5 class="entry-title">Cloyster</h5>
+          <h5>Pokémon bivalvo</h5>
+          <p><agua></agua> <hielo></hielo></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/92.png">
+        <div class="entry-content">
+          <h5>#092</h5>
+					<h5 class="entry-title">Gastly</h5>
+          <h5>Pokémon gas</h5>
+          <p><fantasma></fantasma> <veneno></veneno></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/93.png">
+        <div class="entry-content">
+          <h5>#093</h5>
+					<h5 class="entry-title">Haunter</h5>
+          <h5>Pokémon gas</h5>
+          <p><fantasma></fantasma> <veneno></veneno></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/94.png">
+        <div class="entry-content">
+          <h5>#094</h5>
+					<h5 class="entry-title">Gengar</h5>
+          <h5>Pokémon sombra</h5>
+          <p><fantasma></fantasma> <veneno></veneno></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/94M.png">
+        <div class="entry-content">
+          <h5>#094</h5>
+					<h5 class="entry-title">Mega Gengar</h5>
+          <h5>Pokémon sombra</h5>
+          <p><fantasma></fantasma> <veneno></veneno></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/95.png">
+        <div class="entry-content">
+          <h5>#095</h5>
+					<h5 class="entry-title">Onix</h5>
+          <h5>Pokémon serpiente roca</h5>
+          <p><roca></roca> <tierra></tierra></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/96.png">
+        <div class="entry-content">
+          <h5>#096</h5>
+					<h5 class="entry-title">Drowzee</h5>
+          <h5>Pokémon hipnosis</h5>
+          <p><psiquico></psiquico></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/97.png">
+        <div class="entry-content">
+          <h5>#097</h5>
+					<h5 class="entry-title">Hypno</h5>
+          <h5>Pokémon hipnosis</h5>
+          <p><psiquico></psiquico></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/98.png">
+        <div class="entry-content">
+          <h5>#098</h5>
+					<h5 class="entry-title">Krabby</h5>
+          <h5>Pokémon cangrejo</h5>
+          <p><agua></agua></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/99.png">
+        <div class="entry-content">
+          <h5>#099</h5>
+					<h5 class="entry-title">Kingler</h5>
+          <h5>Pokémon tenaza</h5>
+          <p><agua></agua></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/100.png">
+        <div class="entry-content">
+          <h5>#100</h5>
+					<h5 class="entry-title">Voltorb</h5>
+          <h5>Pokémon bola</h5>
+          <p><electrico></electrico></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/101.png">
+        <div class="entry-content">
+          <h5>#101</h5>
+					<h5 class="entry-title">Electrode</h5>
+          <h5>Pokémon bola</h5>
+          <p><electrico></electrico></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/102.png">
+        <div class="entry-content">
+          <h5>#102</h5>
+					<h5 class="entry-title">Exeggcute</h5>
+          <h5>Pokémon huevo</h5>
+          <p><planta></planta> <psiquico></psiquico></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/103.png">
+        <div class="entry-content">
+          <h5>#103</h5>
+					<h5 class="entry-title">Exeggutor</h5>
+          <h5>Pokémon coco</h5>
+          <p><planta></planta> <psiquico></psiquico></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/103A.png">
+        <div class="entry-content">
+          <h5>#103</h5>
+					<h5 class="entry-title">Exeggutor Alola</h5>
+          <h5>Pokémon coco</h5>
+          <p><planta></planta> <dragon></dragon></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/104.png">
+        <div class="entry-content">
+          <h5>#104</h5>
+					<h5 class="entry-title">Cubone</h5>
+          <h5>Pokémon solitario</h5>
+          <p><tierra></tierra></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/105.png">
+        <div class="entry-content">
+          <h5>#105</h5>
+					<h5 class="entry-title">Marowak</h5>
+          <h5>Pokémon apilahueso</h5>
+          <p><tierra></tierra></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/105A.png">
+        <div class="entry-content">
+          <h5>#105</h5>
+					<h5 class="entry-title">Marowak Alola</h5>
+          <h5>Pokémon apilahueso</h5>
+          <p><fuego></fuego> <fantasma></fantasma></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/106.png">
+        <div class="entry-content">
+          <h5>#106</h5>
+					<h5 class="entry-title">Hitmonlee</h5>
+          <h5>Pokémon patada</h5>
+          <p><lucha></lucha></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/107.png">
+        <div class="entry-content">
+          <h5>#107</h5>
+					<h5 class="entry-title">Hitmonchan</h5>
+          <h5>Pokémon puñetazo</h5>
+          <p><lucha></lucha></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/108.png">
+        <div class="entry-content">
+          <h5>#108</h5>
+					<h5 class="entry-title">Lickitung</h5>
+          <h5>Pokémon Lametazo</h5>
+          <p><normal></normal></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/109.png">
+        <div class="entry-content">
+          <h5>#109</h5>
+					<h5 class="entry-title">Koffing</h5>
+          <h5>Pokémon gas veneno</h5>
+          <p><veneno></veneno></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/110.png">
+        <div class="entry-content">
+          <h5>#110</h5>
+					<h5 class="entry-title">Weezing</h5>
+          <h5>Pokémon gas veneno</h5>
+          <p><veneno></veneno></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/111.png">
+        <div class="entry-content">
+          <h5>#111</h5>
+					<h5 class="entry-title">Rhyhorn</h5>
+          <h5>Pokémon clavos</h5>
+          <p><tierra></tierra> <roca></roca></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/112.png">
+        <div class="entry-content">
+          <h5>#112</h5>
+					<h5 class="entry-title">Rhydon</h5>
+          <h5>Pokémon taladro</h5>
+          <p><tierra></tierra> <roca></roca></p>
+        </div>
+      </article>
+
+
+      <article class="block-item">
+        <img src="../assets/assets/img/113.png">
+        <div class="entry-content">
+          <h5>#113</h5>
+					<h5 class="entry-title">Chansey</h5>
+          <h5>Pokémon huevo</h5>
+          <p><normal></normal></p>
+        </div>
+      </article>
+
 		</div>
 
 
