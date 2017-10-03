@@ -61,6 +61,11 @@ export default new Router({
       component: require('@/components/pokedex/3.vue'),
     },
     {
+      path: '/3M',
+      name: '3M',
+      component: require('@/components/pokedex/3M.vue'),
+    },
+    {
       path: '/4',
       name: '4',
       component: require('@/components/pokedex/4.vue'),
