@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import axios from 'axios';
+import 'vue-instant/dist/vue-instant.css';
+import VueInstant from 'vue-instant';
+Vue.use(VueInstant);
 
 import App from './App';
 import router from './router';
@@ -53,6 +56,7 @@ Vue.http = Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
+
 new Vue({
   components: { App },
   router,

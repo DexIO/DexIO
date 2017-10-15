@@ -19,7 +19,7 @@
           <div class="masNav">
             <h4><router-link :to="{ name: 'mas', params: {} }"><li>Más funciones</li></router-link></h4></div>
           <div class="perfilNav">
-            <h4><router-link :to="{ name: 'perfil', params: {} }"><li><div class="perfil"></div></li></router-link></h4></div>
+            <h4><router-link :to="{ name: 'perfil', params: {} }"><li><div class="perfil"><img src="../../assets/assets/img/profile.png" /></div></li></router-link></h4></div>
         </ul>
       </div>
     </div>
@@ -85,7 +85,6 @@ export default {
 }
 [class*="col-"] {
     float: left;
-    padding: 30px;
     padding-top: 10px;
 }
 input,
@@ -353,7 +352,7 @@ h4 {
 
 h5 {
   font-family: 'Fira Sans';
-  font-size: 36px;
+  font-size: 25px;
   font-weight: 500;
   color: #262626;
   margin: 0px;
@@ -373,6 +372,8 @@ h5 {
   border-radius: 50%;
   background-color: #d8d8d8;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  overflow:hidden;
+
 }
 
 .perfilNav {

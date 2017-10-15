@@ -61,11 +61,6 @@ export default new Router({
       component: require('@/components/pokedex/3.vue'),
     },
     {
-      path: '/3M',
-      name: '3M',
-      component: require('@/components/pokedex/3M.vue'),
-    },
-    {
       path: '/4',
       name: '4',
       component: require('@/components/pokedex/4.vue'),
@@ -301,37 +296,37 @@ export default new Router({
       component: require('@/components/pokedex/50.vue'),
     },
     {
-      path: '51',
+      path: '/51',
       name: '51',
       component: require('@/components/pokedex/51.vue'),
     },
     {
-      path: '52',
+      path: '/52',
       name: '52',
       component: require('@/components/pokedex/52.vue'),
     },
     {
-      path: '53',
+      path: '/53',
       name: '53',
       component: require('@/components/pokedex/53.vue'),
     },
     {
-      path: '54',
+      path: '/54',
       name: '54',
       component: require('@/components/pokedex/54.vue'),
     },
     {
-      path: '55',
+      path: '/55',
       name: '55',
       component: require('@/components/pokedex/55.vue'),
     },
     {
-      path: '56',
+      path: '/56',
       name: '56',
       component: require('@/components/pokedex/56.vue'),
     },
     {
-      path: '57',
+      path: '/57',
       name: '57',
       component: require('@/components/pokedex/57.vue'),
     },
@@ -454,6 +449,366 @@ export default new Router({
       path: '/81',
       name: '81',
       component: require('@/components/pokedex/81.vue'),
+    },
+    {
+      path: '/82',
+      name: '82',
+      component: require('@/components/pokedex/82.vue'),
+    },
+    {
+      path: '/83',
+      name: '83',
+      component: require('@/components/pokedex/83.vue'),
+    },
+    {
+      path: '/84',
+      name: '84',
+      component: require('@/components/pokedex/84.vue'),
+    },
+    {
+      path: '/85',
+      name: '85',
+      component: require('@/components/pokedex/85.vue'),
+    },
+    {
+      path: '/86',
+      name: '86',
+      component: require('@/components/pokedex/86.vue'),
+    },
+    {
+      path: '/87',
+      name: '87',
+      component: require('@/components/pokedex/87.vue'),
+    },
+    {
+      path: '/88',
+      name: '88',
+      component: require('@/components/pokedex/88.vue'),
+    },
+    {
+      path: '/89',
+      name: '89',
+      component: require('@/components/pokedex/89.vue'),
+    },
+    {
+      path: '/90',
+      name: '90',
+      component: require('@/components/pokedex/90.vue'),
+    },
+    {
+      path: '/91',
+      name: '91',
+      component: require('@/components/pokedex/91.vue'),
+    },
+    {
+      path: '/92',
+      name: '92',
+      component: require('@/components/pokedex/92.vue'),
+    },
+    {
+      path: '/93',
+      name: '93',
+      component: require('@/components/pokedex/93.vue'),
+    },
+    {
+      path: '/94',
+      name: '94',
+      component: require('@/components/pokedex/94.vue'),
+    },
+    {
+      path: '/95',
+      name: '95',
+      component: require('@/components/pokedex/95.vue'),
+    },
+    {
+      path: '/96',
+      name: '96',
+      component: require('@/components/pokedex/96.vue'),
+    },
+    {
+      path: '/97',
+      name: '97',
+      component: require('@/components/pokedex/97.vue'),
+    },
+    {
+      path: '/98',
+      name: '98',
+      component: require('@/components/pokedex/98.vue'),
+    },
+    {
+      path: '/99',
+      name: '99',
+      component: require('@/components/pokedex/99.vue'),
+    },
+    {
+      path: '/100',
+      name: '100',
+      component: require('@/components/pokedex/100.vue'),
+    },
+    {
+      path: '/101',
+      name: '101',
+      component: require('@/components/pokedex/101.vue'),
+    },
+    {
+      path: '/102',
+      name: '102',
+      component: require('@/components/pokedex/102.vue'),
+    },
+    {
+      path: '/103',
+      name: '103',
+      component: require('@/components/pokedex/103.vue'),
+    },
+    {
+      path: '/104',
+      name: '104',
+      component: require('@/components/pokedex/104.vue'),
+    },
+    {
+      path: '/105',
+      name: '105',
+      component: require('@/components/pokedex/105.vue'),
+    },
+    {
+      path: '/106',
+      name: '106',
+      component: require('@/components/pokedex/106.vue'),
+    },
+    {
+      path: '/107',
+      name: '107',
+      component: require('@/components/pokedex/107.vue'),
+    },
+    {
+      path: '/108',
+      name: '108',
+      component: require('@/components/pokedex/108.vue'),
+    },
+    {
+      path: '/109',
+      name: '109',
+      component: require('@/components/pokedex/109.vue'),
+    },
+    {
+      path: '/110',
+      name: '110',
+      component: require('@/components/pokedex/110.vue'),
+    },
+    {
+      path: '/111',
+      name: '111',
+      component: require('@/components/pokedex/111.vue'),
+    },
+    {
+      path: '/112',
+      name: '112',
+      component: require('@/components/pokedex/112.vue'),
+    },
+    {
+      path: '/113',
+      name: '113',
+      component: require('@/components/pokedex/113.vue'),
+    },
+    {
+      path: '/114',
+      name: '114',
+      component: require('@/components/pokedex/114.vue'),
+    },
+    {
+      path: '/115',
+      name: '115',
+      component: require('@/components/pokedex/115.vue'),
+    },
+    {
+      path: '/116',
+      name: '116',
+      component: require('@/components/pokedex/116.vue'),
+    },
+    {
+      path: '/117',
+      name: '117',
+      component: require('@/components/pokedex/117.vue'),
+    },
+    {
+      path: '/118',
+      name: '118',
+      component: require('@/components/pokedex/4.vue'),
+    },
+    {
+      path: '/119',
+      name: '119',
+      component: require('@/components/pokedex/4.vue'),
+    },
+    {
+      path: '/120',
+      name: '120',
+      component: require('@/components/pokedex/4.vue'),
+    },
+    {
+      path: '/121',
+      name: '121',
+      component: require('@/components/pokedex/4.vue'),
+    },
+    {
+      path: '/122',
+      name: '122',
+      component: require('@/components/pokedex/5.vue'),
+    },
+    {
+      path: '/123',
+      name: '123',
+      component: require('@/components/pokedex/5.vue'),
+    },
+    {
+      path: '/124',
+      name: '124',
+      component: require('@/components/pokedex/5.vue'),
+    },
+    {
+      path: '/125',
+      name: '125',
+      component: require('@/components/pokedex/5.vue'),
+    },
+    {
+      path: '/126',
+      name: '126',
+      component: require('@/components/pokedex/5.vue'),
+    },
+    {
+      path: '/127',
+      name: '127',
+      component: require('@/components/pokedex/127.vue'),
+    },
+    {
+      path: '/128',
+      name: '128',
+      component: require('@/components/pokedex/128.vue'),
+    },
+    {
+      path: '/129',
+      name: '129',
+      component: require('@/components/pokedex/129.vue'),
+    },
+    {
+      path: '/130',
+      name: '130',
+      component: require('@/components/pokedex/130.vue'),
+    },
+    {
+      path: '/131',
+      name: '131',
+      component: require('@/components/pokedex/131.vue'),
+    },
+    {
+      path: '/132',
+      name: '132',
+      component: require('@/components/pokedex/132.vue'),
+    },
+    {
+      path: '/133',
+      name: '133',
+      component: require('@/components/pokedex/133.vue'),
+    },
+    {
+      path: '/134',
+      name: '134',
+      component: require('@/components/pokedex/134.vue'),
+    },
+    {
+      path: '/135',
+      name: '135',
+      component: require('@/components/pokedex/135.vue'),
+    },
+    {
+      path: '/136',
+      name: '136',
+      component: require('@/components/pokedex/136.vue'),
+    },
+    {
+      path: '/137',
+      name: '137',
+      component: require('@/components/pokedex/137.vue'),
+    },
+    {
+      path: '/138',
+      name: '138',
+      component: require('@/components/pokedex/138.vue'),
+    },
+    {
+      path: '/139',
+      name: '139',
+      component: require('@/components/pokedex/139.vue'),
+    },
+    {
+      path: '/140',
+      name: '140',
+      component: require('@/components/pokedex/140.vue'),
+    },
+    {
+      path: '/141',
+      name: '141',
+      component: require('@/components/pokedex/141.vue'),
+    },
+    {
+      path: '/142',
+      name: '142',
+      component: require('@/components/pokedex/142.vue'),
+    },
+    {
+      path: '/143',
+      name: '143',
+      component: require('@/components/pokedex/143.vue'),
+    },
+    {
+      path: '/144',
+      name: '144',
+      component: require('@/components/pokedex/144.vue'),
+    },
+    {
+      path: '/145',
+      name: '145',
+      component: require('@/components/pokedex/145.vue'),
+    },
+    {
+      path: '/146',
+      name: '146',
+      component: require('@/components/pokedex/146.vue'),
+    },
+    {
+      path: '/147',
+      name: '147',
+      component: require('@/components/pokedex/147.vue'),
+    },
+    {
+      path: '/148',
+      name: '148',
+      component: require('@/components/pokedex/148.vue'),
+    },
+    {
+      path: '/149',
+      name: '149',
+      component: require('@/components/pokedex/149.vue'),
+    },
+    {
+      path: '/150',
+      name: '150',
+      component: require('@/components/pokedex/150.vue'),
+    },
+    {
+      path: '/151',
+      name: '151',
+      component: require('@/components/pokedex/151.vue'),
+    },
+    {
+      path: '/152',
+      name: '152',
+      component: require('@/components/pokedex/152.vue'),
+    },
+    {
+      path: '/153',
+      name: '153',
+      component: require('@/components/pokedex/153.vue'),
     },
     {
       path: '*',

@@ -5,12 +5,12 @@
               <h1>Fichas técnicas</h1>
           </div>
           <div class="wrap">
-              <input type="radio" name="view-filter" id="list-view" class="list-view-radio view-radio" checked>
+              <input type="radio" name="view-filter" id="list-view" class="list-view-radio view-radio">
               <label id="list" for="list-view">
                   <i  class="fa fa-list-ul"></i>
               </label>
 
-              <input type="radio" name="view-filter" id="grid-view" class="grid-view-radio view-radio">
+              <input type="radio" name="view-filter" id="grid-view" class="grid-view-radio view-radio" checked>
               <label id="grid" for="grid-view"><i class="fa fa-th"></i>
               </label>
               <div class="">
@@ -18,7 +18,6 @@
               </div>
 
               <div class="content-container">
-
 
                   <article class="block-item">
                       <router-link :to="{ name: '1', params: {} }">
@@ -2324,6 +2323,849 @@
                   </article>
 
 
+                  <article class="block-item">
+                      <router-link :to="{ name: '114', params: {} }">
+                          <img src="../assets/assets/img/114.png">
+                          <div class="entry-content">
+                              <h5>#114</h5>
+                              <h5 class="entry-title">Tangela</h5>
+                              <h5>Pokémon enredadera</h5>
+                              <p>
+                                  <planta></planta>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '115', params: {} }">
+                          <img src="../assets/assets/img/115.png">
+                          <div class="entry-content">
+                              <h5>#115</h5>
+                              <h5 class="entry-title">Kangaskhan</h5>
+                              <h5>Pokémon padres</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '115M', params: {} }">
+                          <img src="../assets/assets/img/115M.png">
+                          <div class="entry-content">
+                              <h5>#115</h5>
+                              <h5 class="entry-title">Mega Kangaskhan</h5>
+                              <h5>Pokémon padres</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '116', params: {} }">
+                          <img src="../assets/assets/img/116.png">
+                          <div class="entry-content">
+                              <h5>#116</h5>
+                              <h5 class="entry-title">Horsea</h5>
+                              <h5>Pokémon dragon</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '117', params: {} }">
+                          <img src="../assets/assets/img/117.png">
+                          <div class="entry-content">
+                              <h5>#117</h5>
+                              <h5 class="entry-title">Seadra</h5>
+                              <h5>Pokémon dragon</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '118', params: {} }">
+                          <img src="../assets/assets/img/118.png">
+                          <div class="entry-content">
+                              <h5>#118</h5>
+                              <h5 class="entry-title">Goldeen</h5>
+                              <h5>Pokémon pez color</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '119', params: {} }">
+                          <img src="../assets/assets/img/119.png">
+                          <div class="entry-content">
+                              <h5>#119</h5>
+                              <h5 class="entry-title">Seaking</h5>
+                              <h5>Pokémon pez color</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '120', params: {} }">
+                          <img src="../assets/assets/img/120.png">
+                          <div class="entry-content">
+                              <h5>#120</h5>
+                              <h5 class="entry-title">Staryu</h5>
+                              <h5>Pokémon estrellada</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '121', params: {} }">
+                          <img src="../assets/assets/img/121.png">
+                          <div class="entry-content">
+                              <h5>#121</h5>
+                              <h5 class="entry-title">Starmie</h5>
+                              <h5>Pokémon misterioso</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '122', params: {} }">
+                          <img src="../assets/assets/img/122.png">
+                          <div class="entry-content">
+                              <h5>#122</h5>
+                              <h5 class="entry-title">Mr. Mime</h5>
+                              <h5>Pokémon barrera</h5>
+                              <p>
+                                  <psiquico></psiquico>
+                                  <hada></hada>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '123', params: {} }">
+                          <img src="../assets/assets/img/123.png">
+                          <div class="entry-content">
+                              <h5>#123</h5>
+                              <h5 class="entry-title">Scyther</h5>
+                              <h5>Pokémon mantis</h5>
+                              <p>
+                                  <bicho></bicho>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '124', params: {} }">
+                          <img src="../assets/assets/img/124.png">
+                          <div class="entry-content">
+                              <h5>#124</h5>
+                              <h5 class="entry-title">Jynx</h5>
+                              <h5>Pokémon forma humana</h5>
+                              <p>
+                                  <hielo></hielo>
+                                  <psiquico></psiquico>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '125', params: {} }">
+                          <img src="../assets/assets/img/125.png">
+                          <div class="entry-content">
+                              <h5>#125</h5>
+                              <h5 class="entry-title">Electabuzz</h5>
+                              <h5>Pokémon eléctrico</h5>
+                              <p>
+                                  <electrico></electrico>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '126', params: {} }">
+                          <img src="../assets/assets/img/126.png">
+                          <div class="entry-content">
+                              <h5>#126</h5>
+                              <h5 class="entry-title">Magmar</h5>
+                              <h5>Pokémon escupefuego</h5>
+                              <p>
+                                  <fuego></fuego>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '127', params: {} }">
+                          <img src="../assets/assets/img/127.png">
+                          <div class="entry-content">
+                              <h5>#127</h5>
+                              <h5 class="entry-title">Pinsir</h5>
+                              <h5>Pokémon escarabajo</h5>
+                              <p>
+                                  <bicho></bicho>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '127M', params: {} }">
+                          <img src="../assets/assets/img/127M.png">
+                          <div class="entry-content">
+                              <h5>#127</h5>
+                              <h5 class="entry-title">Mega Pinsir</h5>
+                              <h5>Pokémon escarabajo</h5>
+                              <p>
+                                  <bicho></bicho>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '128', params: {} }">
+                          <img src="../assets/assets/img/128.png">
+                          <div class="entry-content">
+                              <h5>#128</h5>
+                              <h5 class="entry-title">Tauros</h5>
+                              <h5>Pokémon toro bravo</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '129', params: {} }">
+                          <img src="../assets/assets/img/129.png">
+                          <div class="entry-content">
+                              <h5>#129</h5>
+                              <h5 class="entry-title">Magikarp</h5>
+                              <h5>Pokémon pez</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '130', params: {} }">
+                          <img src="../assets/assets/img/130.png">
+                          <div class="entry-content">
+                              <h5>#130</h5>
+                              <h5 class="entry-title">Gyarados</h5>
+                              <h5>Pokémon atrocidad</h5>
+                              <p>
+                                  <agua></agua>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '130M', params: {} }">
+                          <img src="../assets/assets/img/130M.png">
+                          <div class="entry-content">
+                              <h5>#130</h5>
+                              <h5 class="entry-title">Mega Gyarados</h5>
+                              <h5>Pokémon atrocidad</h5>
+                              <p>
+                                  <agua></agua>
+                                  <siniestro></siniestro>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '131', params: {} }">
+                          <img src="../assets/assets/img/131.png">
+                          <div class="entry-content">
+                              <h5>#131</h5>
+                              <h5 class="entry-title">Lapras</h5>
+                              <h5>Pokémon transporte</h5>
+                              <p>
+                                  <agua></agua>
+                                  <hielo></hielo>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '132', params: {} }">
+                          <img src="../assets/assets/img/132.png">
+                          <div class="entry-content">
+                              <h5>#132</h5>
+                              <h5 class="entry-title">Ditto</h5>
+                              <h5>Pokémon transformación</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '133', params: {} }">
+                          <img src="../assets/assets/img/133.png">
+                          <div class="entry-content">
+                              <h5>#133</h5>
+                              <h5 class="entry-title">Eevee</h5>
+                              <h5>Pokémon evolución</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '134', params: {} }">
+                          <img src="../assets/assets/img/134.png">
+                          <div class="entry-content">
+                              <h5>#134</h5>
+                              <h5 class="entry-title">Vaporeon</h5>
+                              <h5>Pokémon burbuja</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '135', params: {} }">
+                          <img src="../assets/assets/img/135.png">
+                          <div class="entry-content">
+                              <h5>#135</h5>
+                              <h5 class="entry-title">Jolteon</h5>
+                              <h5>Pokémon relámpago</h5>
+                              <p>
+                                  <electrico></electrico>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '136', params: {} }">
+                          <img src="../assets/assets/img/136.png">
+                          <div class="entry-content">
+                              <h5>#136</h5>
+                              <h5 class="entry-title">Flareon</h5>
+                              <h5>Pokémon llama</h5>
+                              <p>
+                                  <fuego></fuego>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '137', params: {} }">
+                          <img src="../assets/assets/img/137.png">
+                          <div class="entry-content">
+                              <h5>#137</h5>
+                              <h5 class="entry-title">Porygon</h5>
+                              <h5>Pokémon virtual</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '138', params: {} }">
+                          <img src="../assets/assets/img/138.png">
+                          <div class="entry-content">
+                              <h5>#138</h5>
+                              <h5 class="entry-title">Omanyte</h5>
+                              <h5>Pokémon espiral</h5>
+                              <p>
+                                  <roca></roca>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '139', params: {} }">
+                          <img src="../assets/assets/img/139.png">
+                          <div class="entry-content">
+                              <h5>#139</h5>
+                              <h5 class="entry-title">Omastar</h5>
+                              <h5>Pokémon espiral</h5>
+                              <p>
+                                  <roca></roca>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '140', params: {} }">
+                          <img src="../assets/assets/img/140.png">
+                          <div class="entry-content">
+                              <h5>#140</h5>
+                              <h5 class="entry-title">Kabuto</h5>
+                              <h5>Pokémon marisco</h5>
+                              <p>
+                                  <roca></roca>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '141', params: {} }">
+                          <img src="../assets/assets/img/141.png">
+                          <div class="entry-content">
+                              <h5>#141</h5>
+                              <h5 class="entry-title">Kabutops</h5>
+                              <h5>Pokémon marisco</h5>
+                              <p>
+                                  <roca></roca>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '142', params: {} }">
+                          <img src="../assets/assets/img/142.png">
+                          <div class="entry-content">
+                              <h5>#142</h5>
+                              <h5 class="entry-title">Aerodactyl</h5>
+                              <h5>Pokémon fósil</h5>
+                              <p>
+                                  <roca></roca>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '142M', params: {} }">
+                          <img src="../assets/assets/img/142M.png">
+                          <div class="entry-content">
+                              <h5>#142</h5>
+                              <h5 class="entry-title">Mega Aerodactyl</h5>
+                              <h5>Pokémon fósil</h5>
+                              <p>
+                                  <roca></roca>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '143', params: {} }">
+                          <img src="../assets/assets/img/143.png">
+                          <div class="entry-content">
+                              <h5>#143</h5>
+                              <h5 class="entry-title">Snorlax</h5>
+                              <h5>Pokémon dormir</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '144', params: {} }">
+                          <img src="../assets/assets/img/144.png">
+                          <div class="entry-content">
+                              <h5>#144</h5>
+                              <h5 class="entry-title">Articuno</h5>
+                              <h5>Pokémon congelar</h5>
+                              <p>
+                                  <hielo></hielo>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '145', params: {} }">
+                          <img src="../assets/assets/img/145.png">
+                          <div class="entry-content">
+                              <h5>#145</h5>
+                              <h5 class="entry-title">Zapdos</h5>
+                              <h5>Pokémon eléctrico</h5>
+                              <p>
+                                  <electrico></electrico>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '146', params: {} }">
+                          <img src="../assets/assets/img/146.png">
+                          <div class="entry-content">
+                              <h5>#146</h5>
+                              <h5 class="entry-title">Moltres</h5>
+                              <h5>Pokémon llama</h5>
+                              <p>
+                                  <fuego></fuego>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '147', params: {} }">
+                          <img src="../assets/assets/img/147.png">
+                          <div class="entry-content">
+                              <h5>#147</h5>
+                              <h5 class="entry-title">Dratini</h5>
+                              <h5>Pokémon dragon</h5>
+                              <p>
+                                  <dragon></dragon>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '148', params: {} }">
+                          <img src="../assets/assets/img/148.png">
+                          <div class="entry-content">
+                              <h5>#148</h5>
+                              <h5 class="entry-title">Dragonair</h5>
+                              <h5>Pokémon dragon</h5>
+                              <p>
+                                  <dragon></dragon>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '149', params: {} }">
+                          <img src="../assets/assets/img/149.png">
+                          <div class="entry-content">
+                              <h5>#149</h5>
+                              <h5 class="entry-title">Dragonite</h5>
+                              <h5>Pokémon dragon</h5>
+                              <p>
+                                  <dragon></dragon>
+                                  <volador></volador>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '150', params: {} }">
+                          <img src="../assets/assets/img/150.png">
+                          <div class="entry-content">
+                              <h5>#150</h5>
+                              <h5 class="entry-title">Mewtwo</h5>
+                              <h5>Pokémon genético</h5>
+                              <p>
+                                  <psiquico></psiquico>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '150MX', params: {} }">
+                          <img src="../assets/assets/img/150MX.png">
+                          <div class="entry-content">
+                              <h5>#150</h5>
+                              <h5 class="entry-title">Mega Mewtwo X</h5>
+                              <h5>Pokémon genético</h5>
+                              <p>
+                                  <psiquico></psiquico>
+                                  <lucha></lucha>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '150MY', params: {} }">
+                          <img src="../assets/assets/img/150MY.png">
+                          <div class="entry-content">
+                              <h5>#150</h5>
+                              <h5 class="entry-title">Mega Mewtwo Y</h5>
+                              <h5>Pokémon genético</h5>
+                              <p>
+                                  <psiquico></psiquico>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '151', params: {} }">
+                          <img src="../assets/assets/img/151.png">
+                          <div class="entry-content">
+                              <h5>#151</h5>
+                              <h5 class="entry-title">Mew</h5>
+                              <h5>Pokémon nueva especie</h5>
+                              <p>
+                                  <psiquico></psiquico>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '152', params: {} }">
+                          <img src="../assets/assets/img/152.png">
+                          <div class="entry-content">
+                              <h5>#152</h5>
+                              <h5 class="entry-title">Chikorita</h5>
+                              <h5>Pokémon hoja</h5>
+                              <p>
+                                  <planta></planta>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '153', params: {} }">
+                          <img src="../assets/assets/img/153.png">
+                          <div class="entry-content">
+                              <h5>#153</h5>
+                              <h5 class="entry-title">Bayleef</h5>
+                              <h5>Pokémon hoja</h5>
+                              <p>
+                                  <planta></planta>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '154', params: {} }">
+                          <img src="../assets/assets/img/154.png">
+                          <div class="entry-content">
+                              <h5>#154</h5>
+                              <h5 class="entry-title">Meganium</h5>
+                              <h5>Pokémon hierba</h5>
+                              <p>
+                                  <planta></planta>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '155', params: {} }">
+                          <img src="../assets/assets/img/155.png">
+                          <div class="entry-content">
+                              <h5>#155</h5>
+                              <h5 class="entry-title">Cyndaquil</h5>
+                              <h5>Pokémon ratónfuego</h5>
+                              <p>
+                                  <fuego></fuego>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '156', params: {} }">
+                          <img src="../assets/assets/img/156.png">
+                          <div class="entry-content">
+                              <h5>#156</h5>
+                              <h5 class="entry-title">Quilava</h5>
+                              <h5>Pokémon volcán</h5>
+                              <p>
+                                  <fuego></fuego>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '157', params: {} }">
+                          <img src="../assets/assets/img/157.png">
+                          <div class="entry-content">
+                              <h5>#157</h5>
+                              <h5 class="entry-title">Typhlosion</h5>
+                              <h5>Pokémon volcán</h5>
+                              <p>
+                                  <fuego></fuego>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '158', params: {} }">
+                          <img src="../assets/assets/img/158.png">
+                          <div class="entry-content">
+                              <h5>#158</h5>
+                              <h5 class="entry-title">Totodile</h5>
+                              <h5>Pokémon gran fauce</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '159', params: {} }">
+                          <img src="../assets/assets/img/159.png">
+                          <div class="entry-content">
+                              <h5>#159</h5>
+                              <h5 class="entry-title">Croconaw</h5>
+                              <h5>Pokémon gran fauce</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '160', params: {} }">
+                          <img src="../assets/assets/img/160.png">
+                          <div class="entry-content">
+                              <h5>#160</h5>
+                              <h5 class="entry-title">Feraligatr</h5>
+                              <h5>Pokémon gran fauce</h5>
+                              <p>
+                                  <agua></agua>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '161', params: {} }">
+                          <img src="../assets/assets/img/161.png">
+                          <div class="entry-content">
+                              <h5>#161</h5>
+                              <h5 class="entry-title">Sentret</h5>
+                              <h5>Pokémon explorador</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
+                  <article class="block-item">
+                      <router-link :to="{ name: '162', params: {} }">
+                          <img src="../assets/assets/img/162.png">
+                          <div class="entry-content">
+                              <h5>#162</h5>
+                              <h5 class="entry-title">Furret</h5>
+                              <h5>Pokémon alargado</h5>
+                              <p>
+                                  <normal></normal>
+                              </p>
+                          </div>
+                      </router-link>
+                  </article>
+
+
               </div>
 
 
@@ -2336,6 +3178,7 @@
 </template>
 
 <script>
+
 </script>
 
 <style lang="css">
@@ -2402,6 +3245,7 @@ img {
     float: left;
     display: block;
     margin-right: 2.35765%;
+    margin-top: -20px;
     width: 48.82117%;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
@@ -2420,8 +3264,8 @@ img {
   .block-item {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 31.76157%;
+    margin-right: 5.35765%;
+    width: 30.76157%;
   }
   .block-item:last-child {
     margin-right: 0;
@@ -2465,8 +3309,8 @@ img {
   color: #ee4466;
 }
 .content-container{
-  margin-left: 70px;
-  margin-right: 70px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .list-view-radio:checked ~ .content-container .block-item {
