@@ -18,8 +18,10 @@
             <h4><router-link :to="{ name: 'cajas', params: {} }"><li>Cajas</li></router-link></h4></div>
           <div class="masNav">
             <h4><router-link :to="{ name: 'mas', params: {} }"><li>Más funciones</li></router-link></h4></div>
-          <div class="perfilNav">
-            <h4><router-link :to="{ name: 'perfil', params: {} }"><li><div class="perfil"><img src="../../assets/assets/img/profile.png" /></div></li></router-link></h4></div>
+            <div class="perfilNav"><router-link :to="{ name: 'mas', params: {} }"><li>
+              <div class="perfil"><img src="../../assets/assets/img/profile.png" width="100%" /></div>
+              </li></router-link>
+            </div>
         </ul>
       </div>
     </div>
@@ -371,14 +373,14 @@ h5 {
   height: 50px;
   border-radius: 50%;
   background-color: #d8d8d8;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
   overflow:hidden;
 
 }
 
 .perfilNav {
   margin-right: 100px;
-  margin-top: -50px;
+  margin-top: -41px;
   float: right;
 }
 

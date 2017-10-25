@@ -56,9 +56,9 @@ export default {
   -webkit-transition: box-shadow .4s ease, background .4s ease;
   transition: box-shadow .4s ease, background .4s ease;
   border: 0;
-  border-radius: 50px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   background: #FFFFFF;
+  border-radius: 50px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
   width: 100%;
   height: 60px;
   vertical-align: middle;
@@ -104,13 +104,13 @@ export default {
   left: inherit;
   margin: 0;
   border: 0;
-  border-radius: 50px;
   background-color: #ee4466;
   padding: 0;
   width: 60px;
   height: 100%;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  vertical-align: middle;
+  background: #EE4466;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.25);
   text-align: center;
   font-size: inherit;
   -webkit-user-select: none;

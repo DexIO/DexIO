@@ -4,40 +4,29 @@
   <h1>¿Qué te gustaría hacer?</h1>
 </div>
 <searchbar></searchbar>
-  <div class="tarjeta">
-    <div class="menu">
-      <a href="#/pokedex">
-        <div class="pokedexMenu">
-          <img src="../assets/assets/img/pokedex.png">
-        <h3>Investigar en la <br>pokédex</h3>
+<div class="tarjetasInicio">
+  <div class="col-7">
+    <div class="tarjetaPokedex">
+      <div class="col-3 imgInicio">
+        <img src="../assets/assets/img/pokedex.png" alt="">
       </div>
-    </a>
-    <a href="#/editor">
-      <div class="editorMenu">
-        <img src="../assets/assets/img/editor.png">
-        <h3>Crear pokémon <br>con el editor</h3>
-      </div>
-    </a>
-      <a href="#/calculadora">
-      <div class="calculadoraMenu">
-        <img src="../assets/assets/img/calculadora.png">
-        <h3>Analizar con la <br>calculadora</h3>
-      </div>
-      </a>
-      <a href="#/equipos">
-      <div class="equiposMenu">
-        <img src="../assets/assets/img/equipos.png">
-        <h3>Descubrir tácticas <br>con equipos</h3>
-      </div>
-    </a>
-
+    </div>
   </div>
-  <div class="bugReport">
-    <a href="#/bug">
-    <h4>Reportar error</h4>
-  </a>
-  </div>
+  <div class="col-5">
+    <div class="tarjetaEditor">
 
+    </div>
+  </div>
+  <div class="col-5">
+    <div class="tarjetaEquipos">
+
+    </div>
+  </div>
+  <div class="col-7">
+    <div class="tarjetaCalculadora">
+
+    </div>
+  </div>
 </div>
 </div>
 </template>
@@ -48,72 +37,55 @@
 <style lang="css">
 
 #inicio{
-  overflow: hidden;
-}
+overflow-x: hidden;}
 .title {
   margin-top: 105px;
 }
 
-.tarjeta {
-	width: auto;
-	height: auto;
-  position: absolute;
-  bottom:0;
-  top:0;
-  left:0;
-  right:0;
-	border-radius: 14px;
-	box-shadow: 0 2px 10px 10px rgba(0, 0, 0, 0.1);
+.tarjetasInicio{
   margin-left: 70px;
   margin-right: 70px;
-  margin-top: 185px;
-  margin-bottom: 40px;
+  margin-top: 10px;
+min-height:420px;
 }
-.menu{
-  position: relative;
-  }
-.pokedexMenu{
-  width:25%;
-  height: 25%;
-  float: left;
-  display: block; /*for the img inside your div */
-margin: 0 auto;
-text-align: center;
-margin-top: 30px;
+.tarjetaPokedex{
+  width: 98%;
+  height: 11.5625em;
+  background: linear-gradient(90deg, #DF1515, #FC7272);
+border-radius: 12px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
+overflow:visible;
 
 }
-.editorMenu{
-  width:25%;
-     height: 25%;
-     float: left;
-     display: block; /*for the img inside your div */
-margin: 0 auto;
-text-align: center;
-margin-top: 30px;
+.tarjetaEditor{
+  width: 98%;
+  height: 11.5625em;
+  background: linear-gradient(90deg, #FF7406, #FFDF3D);
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
+  float: right;
+  overflow:visible;
 
 }
-.calculadoraMenu{
-  width:25%;
-  height: 25%;
-  float: left;
-  display: block; /*for the img inside your div */
-margin: 0 auto;
-text-align: center;
-margin-top: 30px;
+.tarjetaEquipos{
+  width: 98%;
+  height: 11.5625em;
+  background: linear-gradient(90deg, #05745F, #3BDFD2);
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
+  margin-top: 10px;
+  overflow:visible;
 
 }
-.equiposMenu{
-  width:25%;
-  height: 25%;
-  float: left;
-  display: block; /*for the img inside your div */
-margin: 0 auto;
-text-align: center;
-margin-top: 30px;
-
+.tarjetaCalculadora{
+  width: 98%;
+  height: 11.5625em;
+  background: linear-gradient(90deg, #015FDF, #1ED2FC);
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
+  float: right;
+  margin-top: 10px;
+  overflow:visible;
 }
-.bugReport{
-  text-align: center;
-  margin-top: 331px;
-}
+.imgInicio{}
 </style>
