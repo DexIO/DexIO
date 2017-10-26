@@ -346,9 +346,6 @@ h3 {
 
 h4 {
   font-family: 'Fira Sans';
-  font-size: 24px;
-  font-weight: 300;
-  color: #ee4466;
   margin: 0px;
 }
 
