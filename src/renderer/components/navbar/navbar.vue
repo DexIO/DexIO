@@ -5,7 +5,7 @@
       <div class="navigation">
         <ul>
           <div class="dexioNav">
-            <h2><router-link :to="{ name: 'inicio', params: {} }"><li>DexIO</li></router-link></h2></div>
+            <h2><router-link :to="{ name: 'inicio', params: {} }"><li>Dex<span style="color: #ee4466">IO</span></li></router-link></h2></div>
           <div class="pokedexNav">
             <h4><router-link :to="{ name: 'pokedex', params: {} }"><li>Pokédex</li></router-link></h4></div>
           <div class="editorNav">
@@ -338,18 +338,22 @@ h2 {
 
 h3 {
   font-family: 'Fira Sans';
-  font-size: 24px;
-  font-weight: 200;
-  color: #000000;
+  font-size: 25px;
+  font-weight: 500;
+  color: #262626;
   margin: 0px;
+  text-align: left;
 }
 
-h4 {
+h4{
   font-family: 'Fira Sans';
+  font-size: 24px;
+  font-weight: 300;
+  color: #ee4466;
   margin: 0px;
 }
 
-h5 {
+h5{
   font-family: 'Fira Sans';
   font-size: 25px;
   font-weight: 500;
