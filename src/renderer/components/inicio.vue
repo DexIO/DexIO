@@ -82,7 +82,15 @@ border-radius: 12px;
 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
 overflow:visible;
 display: table;
+transition: all 0.6s ease-in-out;
 }
+.tarjetaPokedex:hover{
+  transform: scale(0.9, 0.9);
+}
+.tarjetaPokedex:o{
+  transform: scale(0.9, 0.9);
+}
+
 .tarjetaEditor{
   width: 98%;
 height: 31vh;
@@ -92,9 +100,13 @@ height: 31vh;
   float: right;
   overflow:visible;
   display: table;
-
-
+  transition: all 0.6s ease-in-out;
 }
+.tarjetaEditor:hover{
+  transform: scale(0.9, 0.9);
+}
+
+
 .tarjetaEquipos{
   width: 98%;
 height: 31vh;
@@ -105,9 +117,14 @@ height: 31vh;
   margin-bottom: 25px;
   overflow:visible;
   display: table;
-
-
+  transition: all 0.6s ease-in-out;
 }
+
+.tarjetaEquipos:hover{
+  transform: scale(0.9, 0.9);
+}
+
+
 .tarjetaCalculadora{
   width: 98%;
 height: 31vh;
@@ -119,8 +136,13 @@ height: 31vh;
   margin-bottom: 25px;
   overflow:visible;
   display: table;
-
+  transition: all 0.6s ease-in-out;
 }
+
+.tarjetaCalculadora:hover{
+  transform: scale(0.9, 0.9);
+}
+
 .imgInicio{
   padding-left:30pX;
   display: table-cell;
