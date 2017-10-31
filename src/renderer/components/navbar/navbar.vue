@@ -305,7 +305,6 @@ select[multiple] {
 
 html,
 body {
-  height: 100%;
   font-family: "Fira Sans";
   margin: 0px;
   background-color: #fff;

@@ -4,7 +4,7 @@
   <h1>¿Qué te gustaría hacer?</h1>
 </div>
 <searchbar></searchbar>
-<div class="tarjetasInicio">
+<div class="components">
   <div class="col-7">
   <router-link :to="{ name: 'pokedex', params: {} }">
     <div class="tarjetaPokedex">
@@ -69,7 +69,7 @@ overflow-x: hidden;}
   margin-top: 105px;
 }
 
-.tarjetasInicio{
+.components{
   margin-left: 70px;
   margin-right: 70px;
   margin-top: 10px;

@@ -1,4 +1,32 @@
 <template lang="html">
+  <div class="navspace">
+    <div class="col-5">
+      <div class="generalData">
+
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="ivData">
+
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="moveData">
+
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="legalData">
+
+      </div>
+    </div>
+    <div class="col-7">
+      <div class="transferData">
+
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -12442,18 +12470,63 @@ export default {
 </script>
 
 <style lang="css">
-.general{
-  width: auto;
-	height: auto;
-  bottom:0;
-  top:0;
-  left:0;
-  right:0;
-	border-radius: 14px;
-	box-shadow: 0 2px 10px 10px rgba(0, 0, 0, 0.1);
+.generalData{
+  width: 98%;
+  height: 30vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.25);
+  overflow:visible;
+  display: table;
+  transition: all 0.6s ease-in-out;
+}
+.ivData{
+  width: 98%;
+  height: 49vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.25);
+  overflow:visible;
+  display: table;
+  transition: all 0.6s ease-in-out;
+  float: right;
+}
+.moveData{
+  width: 98%;
+  height: 49vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.25);
+  overflow:visible;
+  display: table;
+  transition: all 0.6s ease-in-out;
+  float: right;
+}
+.legalData{
+  width: 98%;
+  height: 49vh;
+  margin-top: -19vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.25);
+  overflow:visible;
+  display: table;
+  transition: all 0.6s ease-in-out;
+}
+.transferData{
+  width: 98%;
+  height: 30vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.25);
+  overflow:visible;
+  display: table;
+  transition: all 0.6s ease-in-out;
+  float: right;
+}
+.navspace{
   margin-left: 70px;
   margin-right: 70px;
-  margin-top: 185px;
-  margin-bottom: 40px;
+  margin-top: 90px;
 }
 </style>

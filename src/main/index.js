@@ -22,12 +22,12 @@ function createWindow() {
       experimentalFeatures: true,
     },
     useContentSize: true,
-    width: 1050,
-    height: 600,
+    width: 1280,
+    height: 720,
     frame: false,
     titleBarStyle: 'hidden-inset',
-    minWidth: 1050,
-    minHeight: 600,
+    minWidth: 1280,
+    minHeight: 720,
   });
 
   mainWindow.loadURL(winURL);
